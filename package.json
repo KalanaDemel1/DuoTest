@@ -1,0 +1,45 @@
+{
+  "name": "OpenShift-Sample-App",
+  "version": "1.0.0",
+  "description": "OpenShift Sample Application",
+  "keywords": [
+    "OpenShift",
+    "Node.js",
+    "application",
+    "openshift"
+  ],
+  "author": {
+    "name": "OpenShift",
+    "email": "ramr@example.org",
+    "url": "http://www.openshift.com/"
+  },
+  "homepage": "http://www.openshift.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openshift/origin-server"
+  },
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "async": "^1.2.1",
+    "body-parser": "^1.12.4",
+    "debug": "^2.2.0",
+	"connect": "~2.14.5",
+    "express": "~3.4.4",
+    "geojson-tools": "^0.2.1",
+    "geolib": "^2.0.17",
+    "leaflet": "^0.7.3",
+    "mongoose": "^4.0.5",
+    "multer": "^0.1.8",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "request": "^2.57.0",
+    "restify": "^3.0.3"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+  "private": true,
+  "main": "server.js"
+}

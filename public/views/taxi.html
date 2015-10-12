@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="RideApp">
+<head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLEET SYNC</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.1.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+      <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/shieldui-all.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
+    <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
+
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+    <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"></script>   
+</head>
+<body>
+
+    <div id="wrapper">
+       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Company Panel</a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li class="selected"><a href="#/map"><i class="fa fa-bullseye"></i>Current Locations</a></li>
+                    <li><a href="#/midhome"><i class="fa fa-tasks"></i> Taxi Orders</a></li>
+                    <li><a href="#/taxi"><i class="fa fa-globe"></i> Taxis</a></li>
+                    <li><a href="#/driver"><i class="fa fa-list-ol"></i> Drivers</a></li>
+
+                    <li><a href="#/report"><i class="fa fa-font"></i> Reports</a></li>
+                   
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li>
+                        <a href="#" id="count" name="count" ><i class="fa fa-envelope"></i> Messages <span class="badge"></span> <b class="caret"></b></a>
+                       
+                    </li>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" id="operator" name="operator" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                            <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    <li>
+                        <form class="navbar-search">
+                            <input type="text" placeholder="Search" class="form-control">
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div ng-controller="taxiController" class="container">
+
+
+        <div class="row">
+          <div class="col-lg-9">
+            <h2 id="nav-tabs">Taxis</h2>
+            <div class="bs-example">
+              <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                <li><a data-target="#details" data-toggle="tab">Manage Details of Taxis</a></li>
+                <li><a data-target="#add" data-toggle="tab">Register a Taxi</a></li>
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                
+                <div class="tab-pane fade active in" id="add">
+                  
+                      
+         <div class="panel-body">
+          <div class="form-horizontal row-border" >
+                        {{respadd.msgs.msg}}<br></br>
+        <div class="form-group">
+              <label class="col-md-2 control-label">IMEI</label>
+              <div class="col-md-10">
+               <input ng-model="addtaxi.imei" type="text" name="imei" class="form-control">
+              </div>
+        </div> 
+
+        <div class="form-group">
+              <label class="col-md-2 control-label">Registration No</label>
+              <div class="col-md-10">
+                <input ng-model="addtaxi.regstrno" type="text" name="regstrno" class="form-control">
+              </div>
+        </div>        
+        <div class="form-group">
+              <label class="col-md-2 control-label"> Catergory</label>
+              <div class="col-md-10">
+                 <input ng-model="addtaxi.catergory" type="text" name="catergory" class="form-control">
+              </div>
+        </div> 
+
+        <div class="form-group">
+              <label class="col-md-2 control-label">No.of Passengers</label>
+              <div class="col-md-10">
+                <input ng-model="addtaxi.numOfPass" type="text" name="numOfPass" class="form-control">
+              </div>
+        </div>
+
+        <div class="form-group">
+              <label class="col-md-2 control-label">Color</label>
+              <div class="col-md-10">
+                <input ng-model="addtaxi.color" type="text" name="color" class="form-control">
+              </div>
+        </div>
+
+        
+       
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+                <button  ng-click="add(addtaxi);"  class="btn btn-info">
+                  Add Taxi
+                </button>
+            </div>
+        </div>
+
+          </div>
+    
+                </div>
+                </div>
+                <div class="tab-pane fade" id="details">
+                    <div class="media-body">
+                        
+                        <label>Enter Taxi Registration No</label> 
+                        <div class="input-group">
+                          <input ng-model="vehicle.rgtrno" type="text" class="form-control" placeholder="Vehicle No"> 
+                          <span class="input-group-btn"> 
+                            <button ng-click="search(vehicle);" data-target="#vdetails" class="btn btn-primary" type="button">Get Details</button> 
+                          </span>
+                        </div>
+
+                        <div class="well well-lg">
+                           
+                          <div id="detail" >
+                             <button  ng-click="removetaxis(detail);"  class="btn btn-link">
+                              Remove Taxi
+                              </button><br>
+                          {{detail.respond.error}}<br></br>
+                         EMEI :{{detail.respond[0].imei}}<br></br>
+                         Vehicle No:{{detail.respond[0].regstrno}}<br></br>
+                         Type:{{detail.respond[0].catergory}}<br></br>
+                         Color:{{detail.respond[0].color}}<br></br>
+                         </div>
+                        </div>
+                        
+                      </div>
+                     </div>
+                
+              </div>
+            </div>
+          </div>
+          
+        </div>
+     </div>
+
+        
+        
+
+    </div>
+     
+</body>
+</html>
